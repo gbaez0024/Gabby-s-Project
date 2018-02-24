@@ -1,0 +1,195 @@
+<HTML>
+    <HEAD>
+        <script>
+            //create an array named music_notes that contains the seven image file names
+            //E.png, F.png, G.png, A.png, B.png, C.png and D.png
+            var count = 0;
+            var side = 0; //0...1
+            var num = Math.floor(Math.random() * 7); //0...6
+            var num1 = Math.floor(Math.random() * 4); //0...3
+            var music_notes = ["E.png", "F.png", "G.png", "A.png", "B.png", "C.png","D.png"];
+            var red_notes = ["E_R.png", "F_R.png", "G_R.png", "A_R.png", "B_R.png", "C_R.png","D_R.png"];
+            var yellow_notes = ["E_Y.png", "F_Y.png", "G_Y.png", "A_Y.png", "B_Y.png", "C_Y.png","D_Y.png"];
+            var green_notes = ["E_G.png", "F_G.png", "G_G.png", "A_G.png", "B_G.png", "C_G.png","D_G.png"];
+            var blue_notes = ["E_B.png", "F_B.png", "G_B.png", "A_B.png", "B_B.png", "C_B.png","D_B.png"];
+            var ran_note = ["first", "second", "third", "fourth"];
+            var correct = 0;
+            var number = [0, 0, 0, 0];
+            
+                               
+            function myloop (side,count) {
+            
+                //left side
+                if (side == 0) {
+                
+                    if (count < 50) {
+                    
+                        num = Math.floor(Math.random() * 7); //0...6
+                        document.canvas.src = music_notes[num];
+                        number[0] = num;
+                        num = Math.floor(Math.random() * 7); //0...6
+                        document.canvas1.src = music_notes[num];
+                        number[1] = num;
+                        num = Math.floor(Math.random() * 7); //0...6
+                        document.canvas2.src = music_notes[num];
+                        number[2] = num;
+                        num = Math.floor(Math.random() * 7); //0...6
+                        document.canvas3.src = music_notes[num];
+                        number[3] = num;
+                    }
+                
+                    else {
+                    
+                        num = Math.floor(Math.random() * 7); //0...6
+                        document.canvas.src = red_notes[num];
+                        number[0] = num;
+                        num = Math.floor(Math.random() * 7); //0...6
+                        document.canvas1.src = yellow_notes[num];
+                        number[1] = num;
+                        num = Math.floor(Math.random() * 7); //0...6
+                        document.canvas2.src = green_notes[num];
+                        number[2] = num;
+                        num = Math.floor(Math.random() * 7); //0...6
+                        document.canvas3.src = blue_notes[num];
+                        number[3] = num;
+                    }
+                
+
+                }
+            
+                //Right side
+                if (side == 1) {
+                
+                    if (count < 50) {
+                    
+                        num = Math.floor(Math.random() * 7); //0...6
+                        document.canva.src = music_notes[num];
+                        number[0] = num;
+                        num = Math.floor(Math.random() * 7); //0...6
+                        document.canva1.src = music_notes[num];
+                        number[1] = num;
+                        num = Math.floor(Math.random() * 7); //0...6
+                        document.canva2.src = music_notes[num];
+                        number[2] = num;
+                        num = Math.floor(Math.random() * 7); //0...6
+                        document.canva3.src = music_notes[num];
+                        number[3] = num;
+                    }
+                
+                    else {
+                    
+                        num = Math.floor(Math.random() * 7); //0...6
+                        document.canva.src = red_notes[num];
+                        number[0] = num;
+                        num = Math.floor(Math.random() * 7); //0...6
+                        document.canva1.src = yellow_notes[num];
+                        number[1] = num;
+                        num = Math.floor(Math.random() * 7); //0...6
+                        document.canva2.src = green_notes[num];
+                        number[2] = num;
+                        num = Math.floor(Math.random() * 7); //0...6
+                        document.canva3.src = blue_notes[num];
+                        number[3] = num;
+                    }
+                
+
+                }
+            
+            }
+        
+            function change_back (){
+                document.canvas.src = "blank.png";
+                document.canvas1.src = "blank.png";
+                document.canvas2.src = "blank.png";
+                document.canvas3.src = "blank.png";
+                document.canva.src = "blank.png";
+                document.canva1.src = "blank.png";
+                document.canva2.src = "blank.png";
+                document.canva3.src = "blank.png";
+                document.focus.src = "focus.png";
+            }
+        
+            function question (){
+                num1 = Math.floor(Math.random() * 4);
+                var rep = prompt("What was the " + ran_note[num1] + " music note location ? , use image below start button for guidance and enter a number.","");
+                if (rep ==number[num1]){
+                    correct = correct + 1;
+                }
+                document.getElementById("demo").innerHTML = correct + "/" + count;
+            }
+
+            function Survey (){
+                
+                side = Math.floor(Math.random() * 2); //0...1
+                num = Math.floor(Math.random() * 7); //0...6
+                document.focus.src = "blank.png";
+                myloop(side,count);
+                setTimeout('change_back()',2000);
+                setTimeout('question()',3000);
+                count = count +1;
+            }
+        </script>
+    </HEAD>
+    
+    <BODY>
+        <DIV STYLE = "POSITION: absolute; TOP: 500px; LEFT: 575px">
+        <form name="imageForm">
+            <table border=3>
+                <tr>
+                    <td>
+                        <input onclick="Survey();" type=button value="        Start        ">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                </tr>
+            </table>
+        </form>
+        </div>
+        
+        <DIV STYLE = "POSITION: absolute; TOP: 300px; LEFT: 600px">
+        <img src="focus.png" width="50" height="50" name="focus">
+        </div>
+        
+        
+        
+        <DIV STYLE = "POSITION: absolute; TOP: 300px; LEFT: 0px">
+        <img src="blank.png" width="50" height="50" name="canvas">
+        </div>
+        <DIV STYLE = "POSITION: absolute; TOP: 300px; LEFT: 50px">
+        <img src="blank.png" width="50" height="50" name="canvas1">
+        </div>
+        <DIV STYLE = "POSITION: absolute; TOP: 300px; LEFT: 100px">
+        <img src="blank.png" width="50" height="50" name="canvas2">
+        </div>
+        <DIV STYLE = "POSITION: absolute; TOP: 300px; LEFT: 150px">
+        <img src="blank.png" width="50" height="50" name="canvas3">
+        </div>
+ 
+ 
+ 
+        <DIV STYLE = "POSITION: absolute; TOP: 300px; LEFT: 1075px">
+        <img src="blank.png" width="50" height="50" name="canva">
+        </div>
+        <DIV STYLE = "POSITION: absolute; TOP: 300px; LEFT: 1125px">
+        <img src="blank.png" width="50" height="50" name="canva1">
+        </div>
+        <DIV STYLE = "POSITION: absolute; TOP: 300px; LEFT: 1175px">
+        <img src="blank.png" width="50" height="50" name="canva2">
+        </div>
+        <DIV STYLE = "POSITION: absolute; TOP: 300px; LEFT: 1225px">
+        <img src="blank.png" width="50" height="50" name="canva3">
+        </div>
+ 
+ 
+        <DIV STYLE = "POSITION: absolute; TOP: 500px; LEFT: 200px">
+        <img src="locations.png" width="100" height="100" name="location">
+        </div>
+        
+        <DIV STYLE = "POSITION: absolute; TOP: 700px; LEFT: 575px">
+        <p id="demo"></p>
+        </div>
+        
+    </BODY>
+</HTML>
